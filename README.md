@@ -1,5 +1,3 @@
-# Mental-Health-and-Social-Media
-The Relationship between Mental Health and Social Media
 # Project Proposal: Health Insurance Coverage and Obesity
 
 ## 1. Overview
