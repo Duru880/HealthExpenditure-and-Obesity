@@ -1,163 +1,195 @@
-# Project Proposal: Health Expenditure and Obesity
-
-## 1. Overview
-
-This project examines the relationship between **health expenditure per capita** and **adult obesity rates** across countries from **1990 to 2023**. The main goal is to see whether countries that spend more on healthcare tend to have higher or lower obesity prevalence.
-
-The analysis focuses on **association**, not causation. Obesity is influenced by many factors (income, lifestyle, culture, environment), so the project is about exploring global patterns rather than proving a direct causal effect.
+# Health Expenditure and Obesity  
+### DSA210 — Project Proposal & Phase 2 EDA
 
 ---
 
-## 2. Data Description
-
-All datasets are obtained from **Our World in Data (OWID)**, which compiles information from:
-
-- **Obesity Rates**: WHO Global Health Observatory, via OWID  
-- **Health Expenditure per Capita**: WHO / World Bank, via OWID  
-- **GDP per Capita**: World Bank, via OWID  
-- **Urban Population (% of total population)**: World Bank, via OWID  
-- **Human Development Index (HDI)**: UNDP, via OWID  
-
-### Variables used in the analysis
-
-After cleaning and renaming, the analytical dataset will include:
-
-- `Country` – country name  
-- `Year` – calendar year  
-- `ObesityRate` – prevalence of obesity among adults (BMI ≥ 30, %, age-standardized)  
-- `HealthExpenditure` – per capita health spending (current international-$ or constant 2021 international-$)  
-- `GDPperCapita` – GDP per capita (constant international-$)  
-- `Urbanization` – urban population as a share of total population (%)  
-- `HDI` – Human Development Index (0–1 scale)
-
-All datasets are merged by **(Country, Year)**.
+## 1. Overview  
+This project examines the relationship between **health expenditure per capita** and **adult obesity rates** across countries from **1990 to 2023**.  
+The study focuses on **association**, not causation.
 
 ---
 
-## 3. Research Question
+## 2. Data Description  
+All datasets were obtained from **Our World in Data (OWID)**:
 
-**Main Research Question**
+- **Obesity Rates** (WHO)  
+- **Health Expenditure** (WHO / World Bank)  
+- **GDP per Capita** (World Bank)  
+- **Urbanization (%)**  
+- **HDI** (UNDP)
 
-> Is there a statistically significant association between *health expenditure per capita* and *adult obesity rates* across countries?
+### Variables  
+- `Country`  
+- `Year`  
+- `ObesityRate`  
+- `HealthExpenditure`  
+- `GDPperCapita`  
+- `Urbanization`  
+- `HDI`
 
-**Sub-questions**
-
-- Do higher levels of health expenditure per capita correspond to higher or lower obesity rates?
-- Does the relationship remain after accounting for:
-  - GDP per capita,
-  - Urbanization rate,
-  - Human Development Index (HDI)?
-
----
-
-## 4. Methodology
-
-### 4.1 Data Cleaning
-
-Main steps:
-
-1. **Import and inspect data**  
-   - Load each CSV into a separate pandas DataFrame.  
-   - Use `.info()` and `.describe()` to understand variable types and ranges.
-
-2. **Handle missing values**  
-   - Drop rows with missing values in the key variables used in the regression (obesity, health expenditure, GDP, urbanization, HDI).  
-   - Optionally restrict the analysis to years where most countries have non-missing observations (e.g. 1990–2023).
-
-3. **Standardize identifiers**  
-   - Ensure country names or codes match across datasets.  
-   - Keep only country-year observations that appear in all datasets.
-
-4. **Create final analytical dataset**  
-   - Merge datasets by `Country` and `Year`.  
-   - Keep only the variables required for exploratory analysis and modeling.
-
-### 4.2 Exploratory Data Analysis (EDA)
-
-Planned EDA steps:
-
-- **Summary statistics**
-  - Compute mean, median, standard deviation and quantiles for all main variables.
-- **Time trends**
-  - Global trend in adult obesity rates over time.
-  - Global trend in average health expenditure per capita.
-- **Scatter plots**
-  - Obesity rate vs. health expenditure per capita.
-  - Obesity rate vs. GDP per capita.
-  - Obesity rate vs. urbanization.
-  - Obesity rate vs. HDI.
-- **Correlation matrix**
-  - Compute the correlation matrix between all continuous variables.
-  - Visualize it with a heatmap to see which variables move together.
-
-These steps will help to understand the basic patterns and potential relationships before running any statistical models.
-
-### 4.3 Statistical Model
-
-To formally evaluate the association between health expenditure and obesity, the project will use a **multiple linear regression** model:
-
-\[
-\text{ObesityRate}_{i,t} = \beta_0
-+ \beta_1 \cdot \text{HealthExpenditure}_{i,t}
-+ \beta_2 \cdot \text{GDPperCapita}_{i,t}
-+ \beta_3 \cdot \text{Urbanization}_{i,t}
-+ \beta_4 \cdot \text{HDI}_{i,t}
-+ \epsilon_{i,t}
-\]
-
-Where:
-
-- \( \text{ObesityRate}_{i,t} \): adult obesity rate in country \( i \) at year \( t \)  
-- \( \text{HealthExpenditure}_{i,t} \): health expenditure per capita  
-- \( \text{GDPperCapita}_{i,t} \): GDP per capita  
-- \( \text{Urbanization}_{i,t} \): share of population living in urban areas  
-- \( \text{HDI}_{i,t} \): Human Development Index  
-- \( \epsilon_{i,t} \): error term  
-
-The key parameter of interest is **\( \beta_1 \)**, which measures the association between health expenditure and obesity after controlling for other factors.
+All datasets were merged by **(Country, Year)**.
 
 ---
 
-## 5. Expected Outcomes
+## 3. Research Question  
 
-Several outcomes are possible:
+### Main Question  
+**Is there a statistically significant association between health expenditure per capita and adult obesity rates?**
 
-- **Positive association**  
-  - Countries with higher health expenditure per capita may also be richer and more urbanized, which can be linked to more sedentary lifestyles and higher obesity rates.
-
-- **Negative association**  
-  - Higher health spending could mean stronger preventive care, better health education and more effective obesity treatment, leading to lower obesity prevalence.
-
-- **No clear association**  
-  - Obesity might be driven mainly by unobserved cultural and lifestyle factors that are not fully captured in the model.
-
-Any of these results would be informative for understanding how healthcare investment relates to obesity at the country level.
+### Sub-questions  
+- Do higher-spending countries have higher or lower obesity levels?  
+- Does controlling for GDP, HDI, and urbanization change the relationship?
 
 ---
 
-## 6. Limitations
+## 4. Methodology  
 
-- **Ecological data**  
-  - The analysis uses country-level data, so results cannot be interpreted as individual-level effects.
+### 4.1 Data Cleaning  
+- Loaded raw datasets  
+- Inspected types & missing values  
+- Cleaned NA values (interpolation + fill)  
+- Renamed long OWID variable names  
+- Merged datasets  
 
-- **Correlation, not causation**  
-  - The observational nature of the data means that we cannot claim that health expenditure causes changes in obesity.
+### 4.2 Exploratory Data Analysis  
+- Summary statistics  
+- Trend visualizations  
+- Scatterplots  
+- Correlation heatmap  
 
-- **Unobserved factors**  
-  - Important determinants of obesity (diet, physical activity, food prices, cultural norms) are not included in the model.
+### 4.3 Regression Model  
+The regression model used:
 
-- **Data comparability**  
-  - Measurement methods and coverage may differ across countries and over time.
-
-These limitations will be clearly acknowledged when interpreting the results.
+```
+ObesityRate = β0  
+             + β1 * HealthExpenditure  
+             + β2 * GDPperCapita  
+             + β3 * UrbanPopulation  
+             + β4 * HDI  
+             + ε
+```
 
 ---
 
-## 7. Contribution
+## 5. Expected Outcomes  
+Possible findings include:
 
-This project contributes by combining multiple international datasets to explore how **national health expenditure** is related to a major public health challenge: **rising obesity rates**.
+- Positive association  
+- Negative association  
+- No association  
 
-The findings may be useful for:
+All outcomes provide meaningful insights into global health trends.
 
-- Understanding whether increased healthcare investment is associated with improvements in population health, and  
-- Informing discussions about the role of prevention and lifestyle factors within health systems.
+---
+
+## 6. Limitations  
+- Ecological fallacy  
+- Correlation ≠ causation  
+- Missing lifestyle factors  
+- Cross-country measurement differences  
+
+---
+
+## 7. Contribution  
+This project synthesizes multiple international datasets to explore how health expenditure relates to global obesity patterns.
+
+---
+
+# Phase 2 — Exploratory Data Analysis (EDA) & Hypothesis Testing
+
+## 1. Data Collection  
+Datasets used:
+
+- `obesity.csv`  
+- `healthexp.csv`  
+- `gdp.csv`  
+- `urbanization.csv`  
+- `education.csv`  
+
+Location: **data/**  
+
+Merged by **Country** and **Year**.
+
+---
+
+## 2. Data Cleaning Summary  
+Performed in `EDA_and_Hypothesis.ipynb`:
+
+- Inspected raw data  
+- Renamed variables  
+- Handled missing values  
+- Merged datasets  
+
+Final variables:
+
+- `ObesityRate`  
+- `HealthExpenditure`  
+- `GDPperCapita`  
+- `UrbanPopulation`  
+- `EducationIndex`  
+
+---
+
+## 3. Exploratory Data Analysis  
+
+### 3.1 Summary Statistics  
+Descriptive statistics generated for all numeric variables.
+
+### 3.2 Trend Analysis  
+- Global obesity trend  
+- Global health expenditure trend  
+
+### 3.3 Scatter Plots  
+Examined relationships between obesity and:
+
+- Health Expenditure  
+- GDP per Capita  
+- Urbanization  
+- Education Index  
+
+### 3.4 Correlation Matrix  
+Heatmap findings:
+
+- **UrbanPopulation** → strong positive  
+- **EducationIndex** → moderate positive  
+- **HealthExpenditure** → weak negative  
+- **GDPperCapita** → negative  
+
+---
+
+## 4. Hypothesis Testing  
+
+- **H₀:** No significant association between health expenditure and obesity.  
+- **H₁:** A significant association exists.
+
+---
+
+## 5. Regression Analysis  
+
+### 5.1 Simple Linear Regression  
+```
+ObesityRate = β0 + β1 * HealthExpenditure
+```
+
+### 5.2 Multiple Linear Regression  
+```
+ObesityRate = β0
+             + β1 * HealthExpenditure
+             + β2 * GDPperCapita
+             + β3 * UrbanPopulation
+             + β4 * EducationIndex
+             + ε
+```
+
+### Findings  
+- **HealthExpenditure:** weak negative, significant  
+- **GDPperCapita:** negative, significant  
+- **UrbanPopulation:** strong positive  
+- **EducationIndex:** large positive (likely multicollinearity)  
+
+### Model Performance  
+- **R² ≈ 0.24**
+
+### Interpretation  
+Obesity is more strongly linked to **urbanization** and **HDI/education level** than to health expenditure alone.
+
