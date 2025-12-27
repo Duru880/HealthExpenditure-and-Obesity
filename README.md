@@ -159,8 +159,15 @@ Heatmap findings:
 
 ## 4. Hypothesis Testing  
 
-- **H₀:** No significant association between health expenditure and obesity.  
-- **H₁:** A significant association exists.
+The hypotheses were tested using correlation analysis and linear regression models.
+
+**H₀ (Null Hypothesis):  
+There is no statistically significant relationship between health expenditure per capita
+and adult obesity rates across countries.
+
+**H₁ (Alternative Hypothesis):  
+There is a statistically significant relationship between health expenditure per capita
+and adult obesity rates across countries.
 
 ---
 
