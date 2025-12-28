@@ -47,7 +47,7 @@ All datasets were merged by **(Country, Year)**.
 ### 4.1 Data Cleaning  
 - Loaded raw datasets  
 - Inspected types & missing values  
-- Cleaned NA values (interpolation + fill)  
+- Handled missing values after merging using row-wise exclusion for regression analysis
 - Renamed long OWID variable names  
 - Merged datasets  
 
