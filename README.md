@@ -15,7 +15,7 @@ All datasets were obtained from **Our World in Data (OWID)**:
 - **Obesity Rates** (WHO)  
 - **Health Expenditure** (WHO / World Bank)  
 - **GDP per Capita** (World Bank)  
-- **Urbanization (%)**  
+- **UrbanPopulation (%)**  
 - **HDI** (UNDP)
 
 ### Variables  
@@ -24,7 +24,7 @@ All datasets were obtained from **Our World in Data (OWID)**:
 - `ObesityRate`  
 - `HealthExpenditure`  
 - `GDPperCapita`  
-- `Urbanization`  
+- `UrbanPopulation`  
 - `EducationIndex`
 
 ---
@@ -62,7 +62,7 @@ The regression model used:
 ObesityRate = β0  
              + β1 * HealthExpenditure  
              + β2 * GDPperCapita  
-             + β3 * Urbanization  
+             + β3 * UrbanPopulation  
              + β4 * EducationIndex  
              + ε
 ```
@@ -123,7 +123,7 @@ The final variables used in the analysis are:
 - ObesityRate
 - HealthExpenditure
 - GDPperCapita
-- Urbanization
+- UrbanPopulation
 - EducationIndex
 
 ## 3. Exploratory Data Analysis  
@@ -140,13 +140,13 @@ Examined relationships between obesity and:
 
 - Health Expenditure  
 - GDP per Capita  
-- Urbanization  
+- UrbanPopulation  
 - Education Index  
 
 ### 3.4 Correlation Matrix  
 Heatmap findings:
 
-- **Urbanization** → strong positive  
+- **UrbanPopulation** → strong positive  
 - **EducationIndex** → moderate positive  
 - **HealthExpenditure** → weak negative  
 - **GDPperCapita** → negative  
@@ -179,7 +179,7 @@ ObesityRate = β0 + β1 * HealthExpenditure
 ObesityRate = β0
              + β1 * HealthExpenditure
              + β2 * GDPperCapita
-             + β3 * Urbanization
+             + β3 * UrbanPopulation
              + β4 * EducationIndex
              + ε
 ```
@@ -187,20 +187,20 @@ ObesityRate = β0
 ### Findings  
 - **HealthExpenditure:** weak negative, significant  
 - **GDPperCapita:** negative, significant  
-- **Urbanization:** strong positive  
+- **UrbanPopulation:** strong positive  
 - **EducationIndex:** large positive (likely multicollinearity)  
 
 ### Model Performance  
 - **R² ≈ 0.24**
 
 ### Interpretation  
-Obesity is more strongly linked to **Urbanization** and **EducationIndex/education level** than to health expenditure alone.
+Obesity is more strongly linked to **UrbanPopulation** and **EducationIndex/education level** than to health expenditure alone.
 
 ### Confounding Variables and Sign Reversal
 
 The change in the sign of the Health Expenditure coefficient between the simple and multiple regression models suggests the presence of confounding variables. In the simple model, health expenditure partly captures income-related effects, as wealthier countries tend to spend more on healthcare and also exhibit higher obesity rates.
 
-Once GDP per capita, urbanization, and education index are included as control variables, the coefficient of Health Expenditure becomes negative. This indicates that, after accounting for socioeconomic factors, higher health expenditure is associated with lower obesity rates, potentially reflecting the role of preventive healthcare and public health interventions.
+Once GDP per capita, UrbanPopulation, and education index are included as control variables, the coefficient of Health Expenditure becomes negative. This indicates that, after accounting for socioeconomic factors, higher health expenditure is associated with lower obesity rates, potentially reflecting the role of preventive healthcare and public health interventions.
 
 GDP per capita and education index therefore act as confounding variables in the relationship between health expenditure and obesity.
 
