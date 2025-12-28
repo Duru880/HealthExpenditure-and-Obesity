@@ -240,3 +240,15 @@ The Random Forest model substantially outperforms Linear Regression, explaining 
 The large performance gap between Linear Regression and Random Forest Regression suggests that the relationship between obesity rates and socioeconomic indicators is largely non-linear. Ensemble-based models such as Random Forest are better suited to capturing complex interactions and non-linear patterns in the data.
 
 Overall, Random Forest Regression provides stronger explanatory and predictive performance for this dataset and is therefore more appropriate for modeling obesity rates compared to a simple linear baseline model.
+
+## Conclusion
+
+This project investigated the relationship between health expenditure per capita and adult obesity rates across countries using global data from 1990 to 2023. By combining multiple international datasets, the analysis aimed to understand how health spending relates to obesity when broader socioeconomic factors are taken into account.
+
+Exploratory data analysis revealed clear global trends, including a steady increase in obesity rates over time and strong associations between obesity and variables such as urban population and education level. Correlation analysis suggested that health expenditure alone has a relatively weak relationship with obesity, while socioeconomic structure appears to play a more prominent role.
+
+Regression analysis further supported these findings. Simple linear regression showed a weak association between health expenditure and obesity, while multiple regression highlighted the importance of controlling for confounding variables such as GDP per capita, urbanization, and education index. The observed sign reversal of the health expenditure coefficient indicates that income and development-related factors partially confound the relationship between health spending and obesity outcomes.
+
+In the final phase of the project, machine learning models were applied to evaluate predictive performance rather than causal inference. While Linear Regression provided a useful baseline with limited explanatory power, Random Forest Regression substantially improved prediction accuracy. This result suggests that the relationship between obesity and socioeconomic indicators is largely non-linear and involves complex interactions that cannot be adequately captured by linear models.
+
+Overall, the findings indicate that obesity is more strongly associated with structural and demographic factors than with health expenditure alone. Increasing healthcare spending may contribute to lower obesity rates only when accompanied by broader socioeconomic conditions, such as education and urban development. Future research could extend this work by incorporating lifestyle variables, dietary patterns, or policy-level indicators to further improve both interpretability and predictive performance.
