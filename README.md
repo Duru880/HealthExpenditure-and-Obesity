@@ -198,3 +198,12 @@ ObesityRate = β0
 ### Interpretation  
 Obesity is more strongly linked to **urbanization** and **HDI/education level** than to health expenditure alone.
 
+### Confounding Variables and Sign Reversal
+
+The change in the sign of the Health Expenditure coefficient between the simple and multiple regression models suggests the presence of confounding variables. In the simple model, health expenditure partly captures income-related effects, as wealthier countries tend to spend more on healthcare and also exhibit higher obesity rates.
+
+Once GDP per capita, urbanization, and education index are included as control variables, the coefficient of Health Expenditure becomes negative. This indicates that, after accounting for socioeconomic factors, higher health expenditure is associated with lower obesity rates, potentially reflecting the role of preventive healthcare and public health interventions.
+
+GDP per capita and education index therefore act as confounding variables in the relationship between health expenditure and obesity.
+
+
