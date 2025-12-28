@@ -25,9 +25,7 @@ All datasets were obtained from **Our World in Data (OWID)**:
 - `HealthExpenditure`  
 - `GDPperCapita`  
 - `Urbanization`  
-- `HDI`
-
-All datasets were merged by **(Country, Year)**.
+- `EducationIndex`
 
 ---
 
@@ -38,7 +36,7 @@ All datasets were merged by **(Country, Year)**.
 
 ### Sub-questions  
 - Do higher-spending countries have higher or lower obesity levels?  
-- Does controlling for GDP, HDI, and urbanization change the relationship?
+- Does controlling for GDP, EducationIndex, and UrbanPopulation change the relationship?
 
 ---
 
@@ -64,8 +62,8 @@ The regression model used:
 ObesityRate = β0  
              + β1 * HealthExpenditure  
              + β2 * GDPperCapita  
-             + β3 * UrbanPopulation  
-             + β4 * HDI  
+             + β3 * Urbanization  
+             + β4 * EducationIndex  
              + ε
 ```
 
@@ -95,6 +93,7 @@ This project synthesizes multiple international datasets to explore how health e
 
 ---
 
+
 # Phase 2 — Exploratory Data Analysis (EDA) & Hypothesis Testing
 
 ## 1. Data Collection  
@@ -108,7 +107,6 @@ Datasets used:
 
 Location: **data/**  
 
-Merged by **Country** and **Year**.
 ---
 
 ## 2. Data Cleaning Summary
@@ -125,7 +123,7 @@ The final variables used in the analysis are:
 - ObesityRate
 - HealthExpenditure
 - GDPperCapita
-- UrbanPopulation
+- Urbanization
 - EducationIndex
 
 ## 3. Exploratory Data Analysis  
@@ -148,7 +146,7 @@ Examined relationships between obesity and:
 ### 3.4 Correlation Matrix  
 Heatmap findings:
 
-- **UrbanPopulation** → strong positive  
+- **Urbanization** → strong positive  
 - **EducationIndex** → moderate positive  
 - **HealthExpenditure** → weak negative  
 - **GDPperCapita** → negative  
@@ -181,7 +179,7 @@ ObesityRate = β0 + β1 * HealthExpenditure
 ObesityRate = β0
              + β1 * HealthExpenditure
              + β2 * GDPperCapita
-             + β3 * UrbanPopulation
+             + β3 * Urbanization
              + β4 * EducationIndex
              + ε
 ```
@@ -189,14 +187,14 @@ ObesityRate = β0
 ### Findings  
 - **HealthExpenditure:** weak negative, significant  
 - **GDPperCapita:** negative, significant  
-- **UrbanPopulation:** strong positive  
+- **Urbanization:** strong positive  
 - **EducationIndex:** large positive (likely multicollinearity)  
 
 ### Model Performance  
 - **R² ≈ 0.24**
 
 ### Interpretation  
-Obesity is more strongly linked to **urbanization** and **HDI/education level** than to health expenditure alone.
+Obesity is more strongly linked to **Urbanization** and **EducationIndex/education level** than to health expenditure alone.
 
 ### Confounding Variables and Sign Reversal
 
