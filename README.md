@@ -204,4 +204,39 @@ Once GDP per capita, UrbanPopulation, and education index are included as contro
 
 GDP per capita and education index therefore act as confounding variables in the relationship between health expenditure and obesity.
 
+# Phase 3 — Machine Learning Analysis
 
+To further evaluate the predictive relationship between obesity rates and socioeconomic indicators, supervised machine learning models were implemented. The goal of this phase is not causal inference but predictive performance comparison.
+
+## Model Setup
+
+The target variable is **ObesityRate**, while the following variables are used as predictors:
+
+- HealthExpenditure  
+- GDPperCapita  
+- UrbanPopulation  
+- EducationIndex  
+
+The dataset was split into training (80%) and test (20%) sets. Model performance was evaluated using **RMSE (Root Mean Squared Error)** and **R² (Coefficient of Determination)**.
+
+## Model Performance Summary
+
+### Linear Regression (Baseline Model)
+
+- **RMSE ≈ 9.74**  
+- **R² ≈ 0.24**
+
+The Linear Regression model explains approximately 24% of the variance in obesity rates. This level of performance is expected for a baseline linear model and indicates limited predictive power, suggesting that linear assumptions are insufficient to fully capture the relationship between obesity and the selected socioeconomic variables.
+
+### Random Forest Regression
+
+- **RMSE ≈ 4.14**  
+- **R² ≈ 0.86**
+
+The Random Forest model substantially outperforms Linear Regression, explaining approximately 86% of the variance in obesity rates. The lower RMSE also indicates significantly improved prediction accuracy.
+
+## Interpretation
+
+The large performance gap between Linear Regression and Random Forest Regression suggests that the relationship between obesity rates and socioeconomic indicators is largely non-linear. Ensemble-based models such as Random Forest are better suited to capturing complex interactions and non-linear patterns in the data.
+
+Overall, Random Forest Regression provides stronger explanatory and predictive performance for this dataset and is therefore more appropriate for modeling obesity rates compared to a simple linear baseline model.
