@@ -109,26 +109,24 @@ Datasets used:
 Location: **data/**  
 
 Merged by **Country** and **Year**.
-
 ---
 
-## 2. Data Cleaning Summary  
-Performed in `EDA_and_Hypothesis.ipynb`:
+## 2. Data Cleaning Summary
 
-- Inspected raw data  
-- Renamed variables  
-- Handled missing values  
-- Merged datasets  
+The data cleaning process was performed in EDA_and_Hypothesis.ipynb and consisted of the following steps:
 
-Final variables:
+- Raw datasets were inspected individually to understand their structure and missingness patterns.
+- Variable names were renamed for consistency across datasets.
+- All datasets were merged first using common keys (Entity, Code, and Year).
+- Missing values were handled after merging to avoid discarding valid observations present in some datasets but missing in others.
 
-- `ObesityRate`  
-- `HealthExpenditure`  
-- `GDPperCapita`  
-- `UrbanPopulation`  
-- `EducationIndex`  
+The final variables used in the analysis are:
 
----
+- ObesityRate
+- HealthExpenditure
+- GDPperCapita
+- UrbanPopulation
+- EducationIndex
 
 ## 3. Exploratory Data Analysis  
 
